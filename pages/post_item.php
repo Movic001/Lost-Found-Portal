@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Post Found Item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/post_item.css"> <!-- You can customize this CSS -->
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Post Found Item</h2>
+        <form action="processes/post_item_process.php" method="POST" enctype="multipart/form-data">
+            <input type="text" name="item_name" placeholder="Item Name" required>
+            <input type="text" name="category" placeholder="Category" required>
+            <textarea name="description" placeholder="Description" rows="4" required></textarea>
+            <input type="text" name="location_found" placeholder="Location Found" required>
+            <input type="date" name="date_found" required>
+            <input type="text" name="person_name" placeholder="Your Name" required>
+            <input type="number" name="contact_info" placeholder="Contact Information" required>
+            <input type="file" name="image_path" accept="image/*">
+            <button type="submit" name="postItem">Submit Found Item</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
