@@ -44,8 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['login'])) {
     $user = new User($db);
 
     if ($user->login($email, $password)) {
-        echo "<script>alert('Login successful!'); window.location.href='../dashboard.php';</script>";
-        exit;
+        include('../status/login_success_message.php');
     } else {
         echo "<script>alert('Invalid email or password.');window.location.href='../login.php';</script>";
     }

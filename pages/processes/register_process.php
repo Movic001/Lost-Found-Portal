@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
 
     try {
         if ($user->register($formData)) {
-            echo "<script>alert('🎉 Registration successful!'); window.location.href='../login.php';</script>";
+            include('../status/registration_success_message.php');
         } else {
             echo "<script>alert('❌ Registration failed.');</script>";
         }

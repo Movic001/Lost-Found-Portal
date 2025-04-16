@@ -23,10 +23,11 @@
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit" name="login">Login</button>
         </form>
-        <div class="register-link">
-            Don't have an account? <a href="register.php">Register</a>
+        <div>
+            <div class="register-link">
+                Don't have an account? <a href="register.php">Register</a>
+            </div>
         </div>
-    </div>
 
 </body>
 

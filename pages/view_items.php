@@ -24,8 +24,15 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <span class="toggle_back"><a href='./dashboard.php'>
                 <<< </a></span>
-
+        <!-- Search Form -->
+        <div class="search-bar">
+            <form method="GET" action="">
+                <input type="text" name="search" placeholder="Search by item name or category...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
     </div>
+
     <div class="container">
         <div class="grid">
             <?php foreach ($items as $item): ?>

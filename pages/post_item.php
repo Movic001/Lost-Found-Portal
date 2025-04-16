@@ -5,10 +5,17 @@
     <meta charset="UTF-8">
     <title>Post Found Item</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/post_item.css"> <!-- You can customize this CSS -->
+    <link rel="stylesheet" href="../assets/css/post_item.css">
 </head>
 
 <body>
+    <div class="navbar">
+        <h1>Post Found Item</h1>
+
+        <span class="toggle_back"><a href='./dashboard.php'>
+                <<< </a></span>
+
+    </div>
 
     <div class="form-container">
         <h2>Post Found Item</h2>

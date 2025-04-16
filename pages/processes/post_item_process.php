@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['postItem'])) {
     try {
         // Post the found item to the database
         if ($foundItem->postFoundItem($formData, $_FILES['image_path'])) {
-            echo "<script>alert('🎉 Item posted successfully!'); window.location.href='../view_items.php';</script>";
+            include('../status/post_success_message.php');
         } else {
             echo "<script>alert('❌ Failed to post item.'); window.location.href='../post_item.php';</script>";
         }

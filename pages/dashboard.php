@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 $userName = $_SESSION['user_name'];
+$userEmail = $_SESSION["user_email"];
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +24,14 @@ $userName = $_SESSION['user_name'];
     <div class="sidebar">
         <h3>User Profile</h3>
         <p><strong>Name:</strong> <?php echo htmlspecialchars($userName); ?></p>
+        <p><strong>Email:</strong> <?php echo htmlspecialchars($userEmail); ?></p>
         <p><strong>Role:</strong> User</p>
-        <!-- You can add more profile info here -->
+
+        <!-- section to logOut -->
+        <form method="POST" action="processes/logOut.php">
+            <button class="logout-btn" type="submit" name="logOut" onclick="return confirm('Are you sure you want to LogOut?')"> LogOut</button>
+        </form>
+
     </div>
 
 
@@ -42,10 +49,6 @@ $userName = $_SESSION['user_name'];
             <a href="post_item.php">➕ Post Found Item</a>
             <a href="view_items.php">🔍 View Lost Items</a>
 
-            <!-- section to logOut -->
-            <form method="POST" action="processes/logOut.php">
-                <button class="logout-btn" type="submit" name="logOut" onclick="return confirm('Are you sure you want to LogOut?')"> LogOut</button>
-            </form>
         </div>
     </div>
     <script>
