@@ -2,10 +2,25 @@
 session_start();
 // the /../../config/db_config.php will move up one levels to reach the config folder.
 require_once(__DIR__ . '/../config/db_config.php');
+require_once('./search_result.php');
 
-// Fetch items from the database
-$stmt = $db->query("SELECT * FROM found_items ORDER BY created_at DESC");
-$items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//get the foundItem from the searchItems page
+$foundItem = new FoundItem($db);
+
+// Get the search query if it exists
+$searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+// If a search query is provided, fetch the items based on the search term
+if (!empty($searchQuery)) {
+    $items = $foundItem->searchItems($searchQuery);
+} else {
+    // If no search query, fetch all items
+    $items = $foundItem->getAllItems();
+}
+// Show alert if search was performed but no results were found
+if (!empty($searchQuery) && empty($items)) {
+    echo "<script>alert('No items found');</script> window.location.href='view_items.php';</script>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +42,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- Search Form -->
         <div class="search-bar">
             <form method="GET" action="">
-                <input type="text" name="search" placeholder="Search by item name or category...">
+                <input type="text" name="search" placeholder="Search by item name or category..." value="<?php echo htmlspecialchars($searchQuery); ?>">
                 <button type="submit">Search</button>
             </form>
         </div>

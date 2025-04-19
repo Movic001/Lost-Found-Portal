@@ -18,13 +18,14 @@ class FoundItem
             //handle image upload
             $imagePath = $this->uploadImage($image);
 
-            $sql = "INSERT INTO found_items (item_name, category, description, location_found, date_found, person_name, contact_info, image_path, created_at) 
-            VALUES (:item_name, :category, :description, :location_found, :date_found, :person_name, :contact_info, :image_path, NOW())";
+            $sql = "INSERT INTO found_items ( user_id, item_name, category, description, location_found, date_found, person_name, contact_info, image_path, created_at) 
+            VALUES ( :user_id, :item_name, :category, :description, :location_found, :date_found, :person_name, :contact_info, :image_path, NOW())";
 
             $stmt = $this->db->prepare($sql);
 
             //execute the statement with the provided data
             $stmt->execute([
+                ':user_id' => $_SESSION['user_id'], // Assuming you have user_id in session
                 ':item_name' => $data['item_name'],
                 ':category' => $data['category'],
                 ':description' => $data['description'],
@@ -32,7 +33,7 @@ class FoundItem
                 ':date_found' => $data['date_found'],
                 ':person_name' => $data['person_name'],
                 ':contact_info' => $data['contact_info'],
-                ':image_path' => $imagePath
+                ':image_path' => $imagePath,
             ]);
             return true;
         } catch (PDOException $e) {
@@ -80,6 +81,7 @@ class FoundItem
 
 // Check if the form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['postItem'])) {
+
     //collect and sanitize form inputs
     $formData = [
         'item_name' => trim($_POST['item_name']),

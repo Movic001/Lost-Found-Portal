@@ -40,6 +40,7 @@ try {
 // Create lost_items table if not exists
 $sql = "CREATE TABLE IF NOT EXISTS found_items  (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
     item_name VARCHAR(255) NOT NULL,
     category VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
