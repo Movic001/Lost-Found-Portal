@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div
+      id="detector"
+      style="
+        color: green;
+        text-align: center;
+        margin-top: 50px;
+        font-size: 20px;
+      "
+    >
+      Please wait...
+    </div>
+
+    <script>
+      document.getElementById("detector").innerText = "Item Posted successful!";
+      setTimeout(function () {
+        window.location.href = "../../frontend/pages/view_items.php";
+      }, 2000);
+    </script>
+  </body>
+</html>
